@@ -1,0 +1,52 @@
+pipeline {
+    environment {
+        AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+    }
+
+    agent any
+
+    stages {
+       stage('Clean Workspace') {
+            steps {
+                cleanWs()
+             }
+        }
+        stage('Checkout') {
+            steps {
+                script {
+                    dir("terraform") {
+                        git branch: 'jenkins-terr', credentialsId: 'git-id', url: 'https://github.com/nidakhan99/prometheus_data.git'
+                        sh 'chmod +x /var/lib/jenkins/workspace/terraform1/terraform/ROOT_MODULE'
+                    }
+                }
+            }
+        }
+
+        stage('terraform init') {
+            steps {
+                sh 'pwd;cd terraform/ROOT_MODULE ; terraform init'
+            }
+        }
+
+        stage('terraform Action') {
+            steps {
+                echo "Terraform action is –> ${action}"
+        
+                script {
+                    // Check the value of ${action} and execute the appropriate Terraform command
+                    if (action == 'plan') {
+                        sh "cd terraform/ROOT_MODULE && terraform plan -out tfplan"
+                    } else if (action == 'apply') {
+                        sh "cd terraform/ROOT_MODULE && terraform apply -auto-approve"
+                    } else if (action == 'destroy') {
+                        sh "cd terraform/ROOT_MODULE && terraform destroy -auto-approve"
+                    } else {
+                        error "Invalid action: ${action}. Supported actions are 'plan', 'apply', and 'destroy'."
+                    }
+                }
+            }
+        }
+
+    }
+}

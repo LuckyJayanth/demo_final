@@ -1,0 +1,3 @@
+---
+nginx_version: "1.18.0"
+nginx_config_file: "/etc/nginx/nginx.conf"

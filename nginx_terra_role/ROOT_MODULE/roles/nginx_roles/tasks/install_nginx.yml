@@ -1,0 +1,7 @@
+---
+- name: Install Nginx
+  apt:
+    name: "{{ nginx_package_name }}"
+    state: present
+    update_cache: yes
+  when: "'ubuntu' in ansible_distribution.lower()"
