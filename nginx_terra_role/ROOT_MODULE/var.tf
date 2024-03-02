@@ -185,7 +185,7 @@ variable "ssh_user2" {
 
 variable "private_key_path_2" {
   type        = string
-  default     = "/home/ubuntu/ohio.pem"
+  default     = "/var/lib/jenkins/ohio.pem"
   description = "ssh key path"
 }
 
