@@ -1,5 +1,5 @@
 module "vpc" {
-  source           = "/home/jayanth/demo_01/nginx_demo/vpc"
+  source           = "github.com/LuckyJayanth/demo_final/tree/main/nginx_demo/vpc"
   vpc-cidr         = var.vpc-cidr2
   vpc-name         = var.vpc-name2
   vpc-region       = var.vpc-region2
@@ -7,7 +7,7 @@ module "vpc" {
 
 
 module "subnets" {
-  source            = "/home/jayanth/demo_01/nginx_demo/subnet"
+  source            = "github.com/LuckyJayanth/demo_final/tree/main/nginx_demo/subnet"
   vpc-id            = module.vpc.vpc-id-out
   pub_az            = var.pub_az2
   pir_az            = var.pir_az2
@@ -16,13 +16,13 @@ module "subnets" {
 }
 
 module "internet_gateway" {
-  source             = "/home/jayanth/demo_01/nginx_demo/internet_gateway"
+  source             = "github.com/LuckyJayanth/demo_final/tree/main/nginx_demo/internet_gateway"
   vpc-id             = module.vpc.vpc-id-out
   igw-name           = var.igw-name2
 }
 
 module "nat_gateway" {
-  source             = "/home/jayanth/demo_01/nginx_demo/nat_gateway"
+  source             = "github.com/LuckyJayanth/demo_final/tree/main/nginx_demo/nat_gateway"
   pub_sub_id         = module.subnets.pub-sub-out-id[0]
   nat-name           = var.nat-name2
 
@@ -30,7 +30,7 @@ module "nat_gateway" {
 
 
 module "route_tables" {
-  source              = "/home/jayanth/demo_01/nginx_demo/route_table"
+  source              = "github.com/LuckyJayanth/demo_final/tree/main/nginx_demo/route_table"
   vpc-id              = module.vpc.vpc-id-out
   igw                 = module.internet_gateway.igw-id-out
   nat_id              = module.nat_gateway.out_nat
@@ -41,7 +41,7 @@ module "route_tables" {
 }
 
 module "security_grp" {
-  source               = "/home/jayanth/demo_01/nginx_demo/security_group"
+  source               = "github.com/LuckyJayanth/demo_final/tree/main/nginx_demo/security_group"
   vpc_id               = module.vpc.vpc-id-out
   sg-name              = var.sg-name2
   sg_ports             = var.sg_ports2
@@ -52,7 +52,7 @@ module "security_grp" {
 }
 
 module "instances" {
-  source  = "/home/jayanth/demo_01/nginx_demo/EC2"
+  source              = "github.com/LuckyJayanth/demo_final/tree/main/nginx_demo/EC2"
   pub_sub             = module.subnets.pub-sub-out-id
   pir_sub             = module.subnets.pirv-sub-out-id
   sg_id               = module.security_grp.sg_out
