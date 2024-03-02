@@ -1,12 +1,10 @@
 ######################[PROVIDER VARIABLE]#############################
+
 variable "aws-region" {
 type        = string
 default = "us-east-2"
 description = "region for creating vpc infrastructure"
-  
 }
-
-
 
 ######################[ VPC VARIABLES]#############################
 
@@ -26,18 +24,14 @@ variable "vpc-region2" {
 type        = string
 default = "us-east-2"
 description = "region for creating vpc infrastructure"
-  
 }
-
 
 ######################[SUBNET VARIABLE]#############################
 variable "pub-sub-cidr2" {
    type = list(string)
    default = ["10.0.2.0/28","10.0.8.0/28"]
    description = "cidr for public subnets"
-
 }
-
 
 variable "pirv-sub-cidr2" {
    type = list(string)
@@ -65,9 +59,6 @@ variable "igw-name2" {
   description = "name for internet  gateway"
 }
 
-
-
-
 ######################[NAT GATEWAY VARIABLE]#############################
 
 variable "nat-name2" {
@@ -76,7 +67,6 @@ variable "nat-name2" {
   description = "name for nat gateway"
 }
 
-
 ######################[ROUTE TABLE VARIABLE]#############################
 
 variable "rt_ip2" {
@@ -84,8 +74,6 @@ variable "rt_ip2" {
   default = "0.0.0.0/0"
   description = "name for nat gateway"
 }
-
-
 
 ######################[SECURITY GROUP VARIABLE]#############################
 variable "sg-name2" {
@@ -106,7 +94,6 @@ variable "sg_protocol2" {
   description = "security group protocol"
 }
 
-
 variable "sg_cidr2" {
   type        = string
   default     = "0.0.0.0/0"
@@ -118,10 +105,6 @@ variable "sg_protocol-egress2" {
   default     = "-1"
   description = "security outgoing rule"
 }
-
-
-
-
 
 ######################[INSTANCES VARIABLE]#############################
 variable "priv_EC2_name" {
@@ -144,15 +127,11 @@ variable "owner-id2" {
 
 }
 
-
 variable "ami-name2" {
   type        = string
   default     = "ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20231025"
   description = "image of ubuntu 20 version "
-
 }
-
-
 
 variable "ec2_type2" {
   type        = string
@@ -166,14 +145,11 @@ variable "ebi-device-type2" {
   description = "ebs volume type"
 }
 
-
 variable "vartualiztion_type2" {
   type        = string
   default     = "hvm"
   description = "virtualization-type"
 }
-
-
 
 ######################[ANSIBLE VARIABLE]#############################
 
@@ -212,5 +188,3 @@ variable "key2" {
   default     = "ohio"
   description = "key name"
 }
-
-
