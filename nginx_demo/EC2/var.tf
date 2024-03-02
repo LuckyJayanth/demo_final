@@ -10,64 +10,56 @@ variable "pir_sub" {
   description = "private  subnet ids "
 }
 
-
-
-
 variable "type" {
-  type        = string
+  type = string
   default = "t2.micro"
   description = "instance type"
 }
 
-
-
 variable "ec2_type" {
-  type        = string
+  type = string
   default = "t2.micro"
   description = "instance type"
 }
 
 variable "key" {
-  type        = string
+  type = string
   default = "ohio_key"
   description = "key pair name"
 }
 
-
-
 variable "bestion" {
-  type        = string
+  type = string
   default = "bestion_host"
   description = "name for bestion host"
 }
 
 variable "pirv_instance" {
-  type        = string
+  type = string
   default = "pirv_instance"
   description = "name for private server"
 }
 
 variable "sg_port" {
-  type        = number
+  type = number
   default = 22
   description = "ssh port 22 for connection "
 }
 
 variable "sg_protocol" {
-  type        = string
+  type = string
   default = "TCP"
   description = "TCP protocol for connection "
 }
 
-
 variable "sg_cidr" {
-  type        = string
+  type = string
   default = "0.0.0.0/0"
   description = "source for connection"
 }
 
 variable "sg_id" {
-  type        = string
+  type = string
   default = "xxx"
   description = "source for connection"
 }
@@ -103,15 +95,14 @@ variable "vartualiztion_type" {
 }
 
 variable "ssh_user" {
-type        = string
-  
+type = string
 }
 
 variable "private_key_path" {
-type        = string
+type = string
 }
 
 variable "file_name" {
-type        = string
+type = string
 }
 
