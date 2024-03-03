@@ -4,3 +4,7 @@
     src: nginx.conf.j2
     dest: "{{ nginx_config_file }}"
   notify: Restart Nginx
+- name: Copy index.html content
+  template:
+    src: index.html.j2
+    dest: "{{ nginx_index_html_file }}"
