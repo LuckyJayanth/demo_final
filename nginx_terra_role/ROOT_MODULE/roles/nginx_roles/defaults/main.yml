@@ -1,3 +1,4 @@
 ---
 nginx_version: "1.18.0"
 nginx_config_file: "/etc/nginx/sites-enabled/default"
+nginx_index_html_file: "/var/www/html/index.nginx-debian.html"
